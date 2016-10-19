@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "lint": "standard | snazzy",
-    "dev": "rm -rf public/ && mkdir public && cp assets/* public/ && standard --fix | snazzy && webpack --colors --watch & node server.js",
-    "build": "standard | snazzy && webpack -p"
-  },
-  "keywords": ["webpack","react-js","stylus","ava"],
+  "keywords": [
+    "webpack",
+    "react-js",
+    "stylus",
+    "ava"
+  ],
   "author": "Miktown <mcacho@mimotic.com>",
   "license": "MIT",
   "dependencies": {
@@ -30,7 +30,10 @@
     "css-loader": "^0.25.0",
     "enzyme": "^2.5.0",
     "eslint-loader": "^1.6.0",
+    "expect": "^1.20.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "jsdom": "^9.8.0",
+    "jsdom-global": "^2.1.0",
     "json-loader": "^0.5.4",
     "mockery": "^2.0.0",
     "nyc": "^8.3.1",
@@ -44,5 +47,23 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
+  "scripts": {
+    "test": "standard | snazzy && ava --verbose",
+    "lint": "standard | snazzy",
+    "dev": "rm -rf public/ && standard --fix | snazzy && mkdir public && cp assets/* public/ && webpack --colors --watch & node server.js",
+    "build": "standard | snazzy && webpack -p"
   }
 }

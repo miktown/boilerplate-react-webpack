@@ -14,7 +14,7 @@ var config = {
   },
   entry: {
     app: [
-      PATH.app + '/stylus/index.styl',
+      PATH.app + '/stylus',
       PATH.app
     ]
   },
@@ -28,7 +28,7 @@ var config = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        query: { presets: ['react', 'es2015'] }
+        query: { presets: ['es2015', 'react'] }
       },
       {
         test: /\.styl$/,
