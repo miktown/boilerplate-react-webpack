@@ -7,7 +7,7 @@ import AppWrapper from './containers/app'
 class App extends React.Component {
 
   render () {
-    return <AppWrapper name={'Moo'} />
+    return <AppWrapper />
   }
 }
 

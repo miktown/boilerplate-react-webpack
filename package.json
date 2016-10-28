@@ -23,8 +23,11 @@
     "ava": "^0.16.0",
     "ava-webpack": "^1.1.1",
     "babel-loader": "^6.2.5",
+    "babel-plugin-transform-class-properties": "^6.18.0",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
     "babelify": "^7.3.0",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.25.0",
@@ -64,6 +67,7 @@
     "test": "standard | snazzy && ava --verbose",
     "lint": "standard | snazzy",
     "dev": "rm -rf public/ && standard --fix | snazzy && mkdir public && cp assets/* public/ && webpack --colors --watch & node server.js",
+    "devv": "rm -rf public/ && mkdir public && cp assets/* public/ && webpack --colors --watch & node server.js",
     "build": "standard | snazzy && webpack -p"
   }
 }
