@@ -12,7 +12,7 @@ class UpdatedInfo extends React.Component {
   render () {
     return this.props.updated
       ? (<div className={'updatedInfo'}>
-        <p>Datos de hace <strong>{this.props.updated}</strong><a onClick={this.doActualizar} href='!#1'>¿actualizar?</a></p>
+        <p>Datos de hace <strong>{this.props.updated}</strong><a onClick={this.doActualizar.bind(this)} href='!#1'>¿actualizar?</a></p>
       </div>) : null
   }
 }

@@ -41,7 +41,8 @@ class AppWrapper extends React.Component {
     let self = this
     this.setState({
       updated: 0
-    }, self.getDataFromWp())
+    })
+    self.getDataFromWp()
   }
 
   dataStateEval () {
@@ -56,7 +57,7 @@ class AppWrapper extends React.Component {
   render () {
     return <ContentWrapper
       updated={this.state.updated}
-      onClick={this.doActualizar} />
+      onClick={this.doActualizar.bind(this)} />
   }
 
   // ...
