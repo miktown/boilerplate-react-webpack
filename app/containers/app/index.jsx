@@ -12,55 +12,54 @@ class AppWrapper extends React.Component {
   }
 
   dataUpdateSetter () {
-    this.setDataStored('infomes_updated', new Date().getTime(), true)
-    this.setState({
-      updated: this.getDataStored('infomes_updated') || 0
-    })
+    this.setDataStored('infomes_updated', new Date().getTime())
+    return this.getDataStored('infomes_updated') || 0
   }
 
   getDataStored (key) {
     return JSON.parse(window.localStorage.getItem(key)) || false
   }
 
-  setDataStored (key, data, updated) {
+  setDataStored (key, data) {
     window.localStorage.setItem(key, JSON.stringify(data))
-    if (!updated) this.dataUpdateSetter()
   }
 
   removeDataStored (key) {
     window.localStorage.removeItem(key)
-    return this.getDataStored(key) === false
-  }
-
-  getDataFromWp () {
-    this.dataStateEval()
+    return this.getDataStored(key) === 0
   }
 
   doActualizar () {
-    console.log('clicked!!!!')
-    let self = this
+    this.actualizarVista(this.getDataFromWp())
+  }
+
+  actualizarVista (informesUpdated) {
     this.setState({
-      updated: 0
+      updated: informesUpdated
     })
-    self.getDataFromWp()
+  }
+
+  getDataFromWp () {
+    return this.dataUpdateSetter()
   }
 
   dataStateEval () {
-    let key = 'mike01'
-    let val = ['uno', 'dos']
-    this.setDataStored(key, val)
-    console.log(this.getDataStored(key))
-    console.log('remove', this.removeDataStored(key))
-    console.log(this.getDataStored(key))
+    let informesUpdated = this.getDataStored('infomes_updated')
+    return informesUpdated ? this.actualizarVista(informesUpdated) : this.doActualizar()
   }
 
   render () {
+    console.log(this.state)
     return <ContentWrapper
       updated={this.state.updated}
       onClick={this.doActualizar.bind(this)} />
   }
 
   // ...
+}
+
+AppWrapper.state = {
+  updated: 0
 }
 
 // AppWrapper.propTypes = {
@@ -74,9 +73,5 @@ class AppWrapper extends React.Component {
 //   autoPlay: false,
 //   maxLoops: 10,
 // }
-
-AppWrapper.state = {
-  updated: 0
-}
 
 export default AppWrapper
