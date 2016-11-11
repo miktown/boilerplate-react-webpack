@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react'
-import ContentWrapper from '../content/main'
+import InformesWrapper from '../content/main'
 
 class AppWrapper extends React.Component {
 
@@ -40,6 +40,7 @@ class AppWrapper extends React.Component {
   }
 
   getDataFromWp () {
+    // todo - get data from wordpress
     return this.dataUpdateSetter()
   }
 
@@ -49,8 +50,7 @@ class AppWrapper extends React.Component {
   }
 
   render () {
-    console.log(this.state)
-    return <ContentWrapper
+    return <InformesWrapper
       updated={this.state.updated}
       onClick={this.doActualizar.bind(this)} />
   }

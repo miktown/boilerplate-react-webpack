@@ -2,12 +2,18 @@
 
 import React from 'react'
 import UpdatedInfo from '../updated'
+import Informe from '../informe'
 
-class ContentWrapper extends React.Component {
+class InformesWrapper extends React.Component {
 
   render () {
-    return this.props.updated ? <UpdatedInfo {...this.props} /> : (<div>sin datos</div>)
+    return <div>
+      <Informe
+        {...this.props} />
+      <UpdatedInfo
+        {...this.props} />
+    </div>
   }
 }
 
-export default ContentWrapper
+export default InformesWrapper
