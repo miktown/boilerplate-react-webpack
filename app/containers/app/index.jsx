@@ -5,6 +5,13 @@ import InformesWrapper from '../content/main'
 
 class AppWrapper extends React.Component {
 
+  constructor (props) {
+    super(props)
+    this.state = {
+      updated: 0
+    }
+  }
+
   componentWillMount () {
     // comprobar si hay datos en localstorage y coger
     // sino... mostrar loading coger datos del servicio y guardarlos a local storage
@@ -56,10 +63,6 @@ class AppWrapper extends React.Component {
   }
 
   // ...
-}
-
-AppWrapper.state = {
-  updated: 0
 }
 
 // AppWrapper.propTypes = {

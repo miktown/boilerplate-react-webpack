@@ -1,21 +1,92 @@
 @import './reset';
-@import url('http://fonts.googleapis.com/css?family=Roboto:300,400,500');
-body, html
-	font 14px Arial, sans-serif
-	padding 0
-	background #DDD
-	margin 0
 
 #informesappria
+	background white
+	box-sizing border-box
+	overflow hidden
+	height auto
 	#informes_wrapper
-		background white
-		height 3000px
 		.headerInformes
-			background red
-			margin 1em
+			position fixed
+			background rgba(255, 255, 255, 0.93)
+			margin 0
+			padding 1em
+			width 100%
+			display inline-block
+			top 0
+			height 60px
+			margin-left 0
+			box-shadow 0 1px 2px rgba(0, 0, 0, 0.10)
+			section
+				position relative
+				display inline-block
+				padding 1em
+				height 35px
+			.informeInformes,
+			.informeZonas
+				position relative
+				display inline-block
+				width 150px
+				height 35px
+				margin-bottom -27px
+				user-select none
+				.selector.selector_informe
+					transition all .7s ease-in-out
+					display block
+					background #2B3033
+					border-radius 50px
+					color white
+					font-weight 400
+					box-shadow 0 1px 3px rgba(0, 0, 0, 0.28)
+					cursor pointer
+					position relative
+					margin 0
+					text-align center
+					.selector_opcion
+						display none
+						padding .5em 1.5em
+					.selector_opcion.selected
+						display inline-block
+				.selector.selector_informe:hover
+					transition all .2s linear
+					border-radius 0px
+					width 150px
+					display block
+					overflow hidden
+					position absolute
+					cursor default
+					.selector_opcion
+						background white
+						color #666
+						position relative
+						display block
+						cursor pointer
+					.selector_opcion:not(.selected)
+						border-bottom 1px solid rgba(0, 0, 0, 0.05)
+					.firstNext
+						margin-top 33px
+					.selector_opcion:hover
+						background #509bff
+						color white
+					.selector_opcion.selected
+						background #2B3033
+						color white
+						cursor default
+						text-align center
+						width 108px
+						position absolute
+						top 0
+
+
 		.viewInformes
-			background yellow
+			background white
+			display block
 			margin 1em
+			margin-top 8em
+			border-radius 3px 3px 0 0
+			height 2000px
+			overflow auto
+			box-shadow 0 -1px 2px rgba(0, 0, 0, 0.22)
 	.updatedInfo
 		background white
 		display inline-block
