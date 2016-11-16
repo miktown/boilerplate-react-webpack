@@ -1,7 +1,11 @@
 'use strict'
 
 import React from 'react'
+import moment from 'moment'
+
 import Selector from './selector'
+import Filtros from './filtros'
+import Fechas from './fechas'
 
 let datos = {
   infromesMenu: [
@@ -43,8 +47,7 @@ let datos = {
       name: 'Toledo',
       selected: false
     }
-  ]
-
+  ],
 }
 
 class Informe extends React.Component {
@@ -52,17 +55,18 @@ class Informe extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      dataWork: datos
+      dataWork: datos,
+      dateStart: moment().subtract(1, 'month').date(1),
+      dateEnd: moment().subtract(1, 'month').endOf('month')
     }
   }
 
   selectorHandle (seleccionado, target) {
-    let temp = this.state.dataWork
     this.state.dataWork[target].map((item) => {
       item.selected = item.name === seleccionado
     })
     this.setState({
-      dataWork: temp
+      dataWork: this.state.dataWork
     })
   }
 
@@ -74,19 +78,33 @@ class Informe extends React.Component {
     this.selectorHandle(seleccionado, 'informesZonas')
   }
 
+  changeDateHandle (startDate, endDate) {
+    this.setState({
+      dateStart: startDate,
+      dateEnd: endDate
+    })
+  }
+
   render () {
     return <div id='informes_wrapper'>
       <header className='headerInformes'>
         <Selector
           claseWrap='informeZonas'
           datosMenu={this.state.dataWork.informesZonas}
-          onClickCallback={this.selectorZonaHandle.bind(this)} />
+          onChangeCallback={this.selectorZonaHandle.bind(this)} />
         <Selector
           claseWrap='informeInformes'
           datosMenu={this.state.dataWork.infromesMenu}
+          onChangeCallback={this.selectorInformeHandle.bind(this)} />
+        <Filtros
+          claseWrap='filtrosInformes'
+          filtros={[]}
           onClickCallback={this.selectorInformeHandle.bind(this)} />
-        <section className='filtrosInformes'>filtros</section>
-        <section className='fechaInformes'>fecha</section>
+        <Fechas
+          claseWrap='fechaInformes'
+          dateStart={this.state.dateStart}
+          dateEnd={this.state.dateEnd}
+          onChangeDate={this.changeDateHandle.bind(this)} />
       </header>
       <main className='viewInformes'>cuerpo</main>
     </div>

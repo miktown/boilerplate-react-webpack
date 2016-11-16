@@ -9,7 +9,7 @@ class Selector extends React.Component {
   }
 
   doClick (val) {
-    this.props.onClickCallback(val)
+    this.props.onChangeCallback(val)
   }
 
   createMenu () {
@@ -38,7 +38,7 @@ class Selector extends React.Component {
 Selector.propTypes = {
   claseWrap: React.PropTypes.string,
   datosMenu: React.PropTypes.array,
-  onClickCallback: React.PropTypes.func
+  onChangeCallback: React.PropTypes.func
 }
 
 export default Selector
