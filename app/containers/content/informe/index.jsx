@@ -6,6 +6,7 @@ import moment from 'moment'
 import Selector from './selector'
 import Filtros from './filtros'
 import Fechas from './fechas'
+import UpdatedInfo from '../updated'
 
 let datos = {
   infromesMenu: [
@@ -107,6 +108,8 @@ class Informe extends React.Component {
           onChangeDate={this.changeDateHandle.bind(this)} />
       </header>
       <main className='viewInformes'>cuerpo</main>
+      <UpdatedInfo
+        {...this.props} />
     </div>
   }
 }
