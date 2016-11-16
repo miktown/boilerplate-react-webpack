@@ -47,7 +47,7 @@ let datos = {
       name: 'Toledo',
       selected: false
     }
-  ],
+  ]
 }
 
 class Informe extends React.Component {
