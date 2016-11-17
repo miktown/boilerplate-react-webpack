@@ -6,6 +6,7 @@ import moment from 'moment'
 import Selector from './selector'
 import Filtros from './filtros'
 import Fechas from './fechas'
+import InformeView from './infoview'
 import UpdatedInfo from '../updated'
 
 let datos = {
@@ -98,18 +99,15 @@ class Informe extends React.Component {
           datosMenu={this.state.dataWork.infromesMenu}
           onChangeCallback={this.selectorInformeHandle.bind(this)} />
         <Filtros
-          claseWrap='filtrosInformes'
           filtros={[]}
           onClickCallback={this.selectorInformeHandle.bind(this)} />
         <Fechas
-          claseWrap='fechaInformes'
           dateStart={this.state.dateStart}
           dateEnd={this.state.dateEnd}
           onChangeDate={this.changeDateHandle.bind(this)} />
       </header>
-      <main className='viewInformes'>cuerpo</main>
-      <UpdatedInfo
-        {...this.props} />
+      <InformeView {...this.props} />
+      <UpdatedInfo {...this.props} />
     </div>
   }
 }

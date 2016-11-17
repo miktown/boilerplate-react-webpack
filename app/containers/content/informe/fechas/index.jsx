@@ -13,7 +13,7 @@ class Fechas extends React.Component {
   }
 
   render () {
-    return <section className={this.props.claseWrap}>
+    return <section className='fechaInformes'>
         Desde:
       <DatePicker
         selected={this.props.dateStart}
@@ -40,7 +40,6 @@ class Fechas extends React.Component {
 }
 
 Fechas.propTypes = {
-  claseWrap: React.PropTypes.string,
   onChangeDate: React.PropTypes.func
 }
 
