@@ -8,37 +8,56 @@ app.get('/', function (req, res) {
   res.sendFile('./index.html', { title: 'informes app ' })
 })
 
-app.get('/api/mock', function (req, res, next) {
-  var pictures = [
-    {
-      user: {
-        username: 'mimotic',
-        avatar: ''
+app.get('/wp/mock', function (req, res, next) {
+  let datos = {
+    infromesMenu: [
+      {
+        name: 'Profesores',
+        selected: false
       },
-      url: 'office.jpg',
-      likes: 0,
-      liked: false,
-      createdAt: new Date().getTime()
-    },
-    {
-      user: {
-        username: 'mimotic',
-        avatar: ''
+      {
+        name: 'Alumnos',
+        selected: true
       },
-      url: 'office.jpg',
-      likes: 1,
-      liked: true,
-      createdAt: new Date().setDate(new Date().getDate() - 10)
-    }
-  ]
+      {
+        name: 'Pedidos',
+        selected: false
+      },
+      {
+        name: 'Bajas',
+        selected: false
+      },
+      {
+        name: 'Altas',
+        selected: false
+      }
+    ],
+    informesZonas: [
+      {
+        name: 'Pozuelo',
+        selected: false
+      },
+      {
+        name: 'Majadahonda',
+        selected: true
+      },
+      {
+        name: 'Madrid',
+        selected: false
+      },
+      {
+        name: 'Toledo',
+        selected: false
+      }
+    ]
+  }
 
   setTimeout(function () {
-    res.send(pictures)
-  }, 2000)
+    res.send(datos)
+  }, 3000)
 })
 
 app.listen(3000, function (err) {
   if (err) return (console.log('Hubo un error'), process.exit(1))
-
   console.log('Informes app escuchando en el puerto 3000')
 })

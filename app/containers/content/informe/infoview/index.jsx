@@ -4,8 +4,22 @@ import React from 'react'
 
 class InformeView extends React.Component {
 
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      informeName: this.props.false
+    }
+  }
+
+  componentWillMount () {
+
+  }
+
   render () {
-    return <main className='viewInformes'>cuerpo</main>
+    return <main className='viewInformes'>
+        aquí mostramos el informe, neng
+    </main>
   }
 }
 

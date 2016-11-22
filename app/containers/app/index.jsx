@@ -13,12 +13,10 @@ class AppWrapper extends React.Component {
   }
 
   componentWillMount () {
-    // comprobar si hay datos en localstorage y coger
-    // sino... mostrar loading coger datos del servicio y guardarlos a local storage
     this.dataStateEval()
   }
 
-  dataUpdateSetter () {
+  dataUpdateSetter (data) {
     this.setDataStored('infomes_updated', new Date().getTime())
     return this.getDataStored('infomes_updated') || 0
   }
@@ -47,7 +45,6 @@ class AppWrapper extends React.Component {
   }
 
   getDataFromWp () {
-    // todo - get data from wordpress
     return this.dataUpdateSetter()
   }
 
@@ -64,17 +61,5 @@ class AppWrapper extends React.Component {
 
   // ...
 }
-
-// AppWrapper.propTypes = {
-//   autoPlay: React.PropTypes.bool.isRequired,
-//   maxLoops: React.PropTypes.number.isRequired,
-//   posterFrameSrc: React.PropTypes.string.isRequired,
-//   videoSrc: React.PropTypes.string.isRequired,
-// }
-
-// AppWrapper.defaultProps = {
-//   autoPlay: false,
-//   maxLoops: 10,
-// }
 
 export default AppWrapper

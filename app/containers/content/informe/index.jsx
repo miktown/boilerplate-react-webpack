@@ -9,55 +9,12 @@ import Fechas from './fechas'
 import InformeView from './infoview'
 import UpdatedInfo from '../updated'
 
-let datos = {
-  infromesMenu: [
-    {
-      name: 'Profesores',
-      selected: false
-    },
-    {
-      name: 'Alumnos',
-      selected: true
-    },
-    {
-      name: 'Pedidos',
-      selected: false
-    },
-    {
-      name: 'Bajas',
-      selected: false
-    },
-    {
-      name: 'Altas',
-      selected: false
-    }
-  ],
-  informesZonas: [
-    {
-      name: 'Pozuelo',
-      selected: false
-    },
-    {
-      name: 'Majadahonda',
-      selected: true
-    },
-    {
-      name: 'Madrid',
-      selected: false
-    },
-    {
-      name: 'Toledo',
-      selected: false
-    }
-  ]
-}
-
 class Informe extends React.Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      dataWork: datos,
+      dataWork: this.props.datos || false,
       dateStart: moment().subtract(1, 'month').date(1),
       dateEnd: moment().subtract(1, 'month').endOf('month')
     }
@@ -99,14 +56,19 @@ class Informe extends React.Component {
           datosMenu={this.state.dataWork.infromesMenu}
           onChangeCallback={this.selectorInformeHandle.bind(this)} />
         <Filtros
-          filtros={[]}
+          filtros={false}
           onClickCallback={this.selectorInformeHandle.bind(this)} />
         <Fechas
           dateStart={this.state.dateStart}
           dateEnd={this.state.dateEnd}
           onChangeDate={this.changeDateHandle.bind(this)} />
       </header>
-      <InformeView {...this.props} />
+      <InformeView
+        inicio={this.state.dateStart}
+        fin={this.state.dateEnd}
+        informe={false}
+        filtros={false}
+        {...this.props} />
       <UpdatedInfo {...this.props} />
     </div>
   }
